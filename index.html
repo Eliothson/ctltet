@@ -18,21 +18,24 @@
 
         </p>
     </div>
-  <script >
-      var fin=10
+  <script>
+    var plage=2
+      var fin=plage
       var debut=1
       function butonclickGet(){
         console.log(debut,fin)
+        if(debut>1){
+          fin=fin-plage
+        }
         var URL='https://vilajadmin.herokuapp.com/stats?_start='+debut+'&_limit='+fin
         $.get(URL,(data,status)=>{
             //data se limen ou pral pran pou afiche an
             console.log(data)
         })
         .then(()=>{
-            debut=debut+fin
-            fin=fin+fin
-            console.log(debut,fin)
-            
+            debut=debut+plage
+            fin=fin+plage
+            //console.log(debut,fin)
         });
         
       }
