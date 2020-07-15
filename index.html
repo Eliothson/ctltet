@@ -22,12 +22,30 @@
     var plage=5
     var quantite=plage
     var debut=1
-    function butonclickGet(){
+    var data
+    firstload()
+    function firstload(){
+      this.data=null
       console.log("debut "+debut+", quantite ="+plage)
       var URL='https://vilajadmin.herokuapp.com/stats?_start='+debut+'&_limit='+plage
       $.get(URL,(data,status)=>{
           //data se limen ou pral pran pou afiche an
-          console.log(data)
+          this.data=data
+          console.log(this.data)
+      })
+      .then(()=>{
+          debut=debut+plage
+      });
+    }
+
+    function butonclickGet(){
+      this.data=null
+      console.log("debut "+debut+", quantite ="+plage)
+      var URL='https://vilajadmin.herokuapp.com/stats?_start='+debut+'&_limit='+plage
+      $.get(URL,(data,status)=>{
+          //data se limen ou pral pran pou afiche an
+          this.data=data         
+          console.log(this.data)
       })
       .then(()=>{
           debut=debut+plage
